@@ -1,0 +1,103 @@
+<div class="container-fluid mt-4">
+    <div class="row gx-4 gy-4">
+        <div class="col-12 col-lg-7">
+            <div class="card h-100">
+                <div class="card-header">
+                    <h5 class="mb-0">Enquiry List</h5>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-striped mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Enquiry ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Category</th>
+                                    <th>Status</th>
+                                    <th>Type</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>0</td>
+                                    <td>string</td>
+                                    <td>string</td>
+                                    <td>string</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>string</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-5">
+            <div class="card h-100">
+                <div class="card-header">
+                    <h5 class="mb-0">Enquiry Form</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-12 col-md-6">
+                            <label for="customerName" class="form-label">Customer Name</label>
+                            <input type="text" class="form-control" [(ngModel)]="newEnObj.customerName"
+                                id="customerName" placeholder="Enter name">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label for="customerEmail" class="form-label">Customer Email</label>
+                            <input type="email" class="form-control" [(ngModel)]="newEnObj.customerEmail"
+                                id="customerEmail" placeholder="Enter email">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label for="customerPhone" class="form-label">Customer Phone</label>
+                            <input type="tel" class="form-control" [(ngModel)]="newEnObj.customerPhone"
+                                id="customerPhone" placeholder="Enter phone">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label for="enquiryType" class="form-label">Enquiry Type</label>
+                            <input type="text" class="form-control" [(ngModel)]="newEnObj.enquiryType" id="enquiryType"
+                                placeholder="Enter type">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label for="categoryId" class="form-label">Category ID</label>
+                            <select name="" [(ngModel)]="newEnObj.categoryId" class="form-select">
+                                @for (item of categoryList(); track $index) {
+                                <option [value]="item.categoryId">{{item.categoryName}}</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label for="statusId" class="form-label">Status ID</label>
+                            <select class="form-select" [(ngModel)]="newEnObj.statusId" id="statusId">
+                                @for (item of statuList(); track $index) {
+                                <option [value]="item.statusId">{{item.statusName}}</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" [(ngModel)]="newEnObj.message" id="message" rows="3"
+                                placeholder="Enter message"></textarea>
+                        </div>
+                        <div class="col-12">
+                            <label for="feedback" class="form-label">Feedback</label>
+                            <textarea class="form-control" [(ngModel)]="newEnObj.feedback" id="feedback" rows="2"
+                                placeholder="Enter feedback"></textarea>
+                        </div>
+                        <div class="col-12 d-flex align-items-center justify-content-between">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="isConverted">
+                                <label class="form-check-label" for="isConverted">Converted</label>
+                            </div>
+                            <button type="button" (click)="onSaveEnq()" class="btn btn-primary">Submit Enquiry</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,123 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-4">
+                    {{schoolName}}
+                </div>
+                <div class="{{div3BgClassName}}">
+                    <p> {{schoolName}}</p>
+                </div>
+                <div class="col-4">
+                    <input type="text" value="{{schoolName}}" />
+                </div>
+            </div>
+            <hr>
+
+            <input type="text" [(ngModel)]="schoolName">
+            <hr>
+            <button (click)="changeScollName()">Change Name</button>
+
+            <div class="row">
+                <div class="col-4">
+                    <textarea [rows]="addrressRows" value="{{schoolAddress}}"></textarea>
+                </div>
+                <div class="col-4">
+                    <textarea [value]="schoolAddress"></textarea>
+                </div>
+                <div [class]="div3BgClassName">
+                    Course Name : {{getCourseName()}} <br>
+                    <input type="text" [placeholder]="getCourseName()">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <input [type]="myInputType">
+                </div>
+                <div class="col-4">
+                    <input type="checkbox" [checked]="isActive">
+                </div>
+                <div class="col-4">
+                    <input type="text" [placeholder]="myPlaceHolderText">
+                </div>
+            </div>
+            <hr>
+            <hr>
+            <div class="row">
+                <div class="col-3">
+                    <button (click)="showWelcomeText()" class="btn btn-primary">Welcome</button>
+                </div>
+                <div class="col-3">
+                    <button (click)="showMessage('Java')">Java</button>
+                    <button (click)="showMessage('Angular')">Angular</button>
+                    <button (click)="showMessage('Dot Net')"> Dot Net</button>
+                </div>
+                <div class="col-3">
+                    <select (change)="onCityChanged($event)">
+                        <option>Pune</option>
+                        <option>Mumbai</option>
+                        <option>Nagpur</option>
+                        <option>Thane</option>
+                    </select>
+                </div>
+                <div class="col-3">
+                    <input type="text" (input)="onTextChnages()">
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row">
+                <div class="col-5">
+                    <button (click)="showClickedText($event)">Java</button>
+                    <button (click)="showClickedText($event)">Angular</button>
+                    <button (click)="showClickedText($event)"> Dot Net</button>
+                    <button (click)="showClickedText($event)">PHP</button>
+                    <button (click)="showClickedText($event)">React Js</button>
+                    <button (click)="showClickedText($event)">Plastic js</button>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<hr>
+<hr>
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <input type="checkbox" [(ngModel)]="isActive" />
+            <br>
+            {{isActive}}
+        </div>
+        <div class="col-3">
+            <input type="text" [(ngModel)]="num1" placeholder="Enter NUm">
+            <button (click)="getSquare()">Get Square</button>
+        </div>
+        <div class="col-3">
+            <input type="text" [value]="squareValue" placeholder="Square Of Num">
+        </div>
+        <div class="col-3">
+            <select [(ngModel)]="selectedCity">
+                <option value="PN">Pune</option>
+                <option value="MUM">Mumbai</option>
+                <option value="NGP">Nagpur</option>
+                <option value="Th">Thane</option>
+            </select>
+            <br>
+            selectedCity = {{selectedCity}}
+        </div>
+        <div class="col-3">
+            <input type="radio" value="male" [(ngModel)]="selectedGender" name="gender"> Male
+            <input type="radio" value="female" [(ngModel)]="selectedGender" name="gender"> FeMale
+            <br>
+            selectedGender => {{selectedGender}}
+        </div>
+    </div>
+</div>
+
+
+<div (mouseenter)="onMouseEnter()" (mouseleave)="onMOuseLeft()"
+    style="width: 300px;height: 300px;background-color: red;">
+    deiuv 1
+</div>

@@ -1,0 +1,323 @@
+<button routerLink="/data-binding">Data Binding</button>
+<hr>
+<button  (click)="navigateToUser()">User</button>
+<button  (click)="navigateToAdmin()">Admin</button>
+<hr>
+<div class="row">
+    <div class="col-12 text-center">
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary" (click)="changeView('ngIf')">*ngIf , if</button>
+            <button type="button" class="btn btn-primary" (click)="changeView('ngFor')">*ngFor for</button>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    @if (userSelctionView == 'ngIf') {
+    <div class="col-12">
+        <div class="row">
+            <div class="col-12">
+                <h1>
+                    Structural => *ngIf *ngFor *ngSwitch =>
+                </h1>
+                <div class="row">
+                    <div class="col-3">
+                        <div class="bg-danger p-4" *ngIf="isDiv1Visiable">
+                            Div 1
+                        </div>
+                    </div>
+                    <div class="col-4"> Is Offer Avabialble
+                        <input type="checkbox" [(ngModel)]="isOfferVail">
+                    </div>
+                    <div class="col-3">
+                        <input type="text" *ngIf="isOfferVail" placeholder="Enter Offer code">
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-3">
+                        <button class="btn btn-success" (click)="hideShowDiv1(true)">Show</button>
+                        <button class="btn btn-danger" (click)="hideShowDiv1(false)">Hide</button>
+
+                        <button class="btn btn-success" (click)="toggelDiv1Visibility()">Toggle</button>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-3">
+                        <select class="form-select" [(ngModel)]="selectedIdentityProof">
+                            <option value="aadhar">Aadhar Card</option>
+                            <option value="driving">Driving Licicenc No</option>
+                            <option value="pancard">Pan Card</option>
+                        </select>
+                    </div>
+                    <div class="col-3">
+                        <input type="text" *ngIf="selectedIdentityProof == 'pancard'" placeholder="Enter Pan Card ">
+                        <input type="text" *ngIf="selectedIdentityProof == 'aadhar'" placeholder="Enter Aadhar Card ">
+                        <input type="text" *ngIf="selectedIdentityProof == 'driving'"
+                            placeholder="Enter Driving Liceince ">
+                    </div>
+                </div>
+                <hr>
+
+                <div class="row">
+                    <div class="col-3 ">
+                        @if(div2Visiable == 'yes') {
+                        <div class="bg-success p-4">
+                            Div 2
+                        </div>
+                        } @else {
+                        <p>Div Not Visiable</p>
+                        }
+                    </div>
+                    <div class="col-3">
+                        <input type="text" (change)="onTextChange()" [(ngModel)]="textInput" placeholder="Enter Text">
+                    </div>
+                    <div class="col-3">
+                        @if (isVovels) {
+                        <p>Word Contains Vovels</p>
+                        } @else {
+                        <p>Word Does Not Contains Vovels</p>
+                        }
+                    </div>
+                    <div class="col-3">
+                        <input type="text" maxlength="3" [(ngModel)]="startDayChar" placeholder="Enter Day NAme">
+                    </div>
+                    <div class="col-3">
+                        @if (startDayChar == 'mon') {
+                        <p>Monday</p>
+                        } @else if (startDayChar == 'tue') {
+                        <p>Tuesday</p>
+                        } @else if (startDayChar == 'wed') {
+                        <p>Wednesday</p>
+                        } @else {
+                        <p>Wrong Entry</p>
+                        }
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3 p-4">
+                        <button class="btn btn-warning" (click)="chnageDiv2Status()">Toggle </button>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-6">
+                <h1>
+                    Attributes
+                </h1>
+            </div>
+        </div>
+    </div>
+    } @else {
+    <div class="col-12">
+        <div class="row">
+            <div class="col-3">
+                <ul>
+                    <li *ngFor="let city of studentNameList">{{city}}</li>
+                </ul>
+            </div>
+            <div class="col-3">
+                <input *ngFor="let student of studentNameList" [value]="student" type="text" />
+            </div>
+            <div class="col-3">
+                <select name="" id="">
+                    <option *ngFor="let stud of studentNameList"> {{stud}}</option>
+                </select>
+                <p class="text-warning" *ngFor="let stud of studentNameList"> {{stud}}</p>
+            </div>
+            <div class="col-3">
+                <div *ngFor="let stud of studentNameList">
+                    <span>Staundet Name: </span>
+                    <h6>{{stud}}</h6>
+                    <h6>{{stud}}</h6>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                     <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Sr </th>
+                            <th>Name</th>
+                            <th>City</th>
+                            <th>Mobile No</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody> 
+                        <tr *ngFor="let player of playerList;let srNo = index;
+                        let isEven=even;let idOdd = odd; let isFirst = first;let isLast = last">
+                            <!-- <td>
+                                {{srNo +1}} == {{isEven}} == {{idOdd}}
+                            </td> -->
+                            <td>
+                                <input type="text" [value]="player.name">
+                            </td>
+                            <td> 
+                                <app-progress-bar [progressValue]="player.progress"></app-progress-bar>
+                            </td>
+                            <td> <input type="text" [value]="player.city"></td>
+                            <td> <input type="text" [value]="player.contactNo"></td>
+                            <!-- <td>
+                                {{isFirst}} -- {{isLast}}
+                            </td> -->
+                            <!-- <td> 
+                                <h6 *ngIf="player.isActive" class="text-primary">Player is Active</h6>
+                                <h6 *ngIf="!player.isActive" class="text-danger">Player is De-Active Now</h6>
+                            </td> -->
+                        </tr> 
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <ol>
+                    @for (item of studentNameList; track $index) {
+                    <li>{{item}}</li>
+                    }
+                </ol>
+            </div>
+            <div class="col-3">
+                <dl>
+                    @for (student of studentNameList; track $index) {
+                    <dt>{{student}}</dt>
+                    }
+                </dl>
+            </div>
+            <div class="col-3">
+                @for (stud of studentNameList; track $index) {
+                <label for="">Name</label>
+                <textarea class="form-control" value="{{stud}}"></textarea>
+                }
+            </div>
+            <div class="col-3">
+
+                <select class="form-select">
+                    @for (stuyd of studentNameList; track $index) {
+                    <option> {{stuyd}}</option>
+                    }
+                </select>
+
+
+            </div>
+        </div>
+        <hr>
+        @for (item of playerList; track $index) {
+        <div class="row pt-3">
+            <div class="col-3">
+                <input type="text" [value]="item.name">
+            </div>
+            <div class="col-2">
+                <input type="text" value="{{item.city}}">
+            </div>
+            <div class="col-2">
+                <input type="text" value="{{item.contactNo}}">
+            </div>
+        </div>
+        }
+        <hr>
+        <div class="row">
+            <div class="col-6">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Sr No</th>
+                            <th>Name</th>
+                            <th>City</th>
+                            <th>Mobile No</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @for (item of playerList; track $index;let isFirst = $first;let isLast = $last) {
+                        <tr>
+                            <td>{{$index + 1}}</td>
+                            <td>{{item.name}}</td>
+                            <td>{{item.city}}</td>
+                            <td>{{item.contactNo}}</td>
+                            <td>
+                                {{$even}}
+                            </td>
+                            <td>
+                                {{isFirst}} -- {{isLast}}
+                            </td>
+                            <td>
+                                @if (item.isActive) {
+                                     <h6 class="text-primary">Player is Active</h6>
+                                } @else { 
+                                    <h6 class="text-danger">Player is De-Active Now</h6>
+                                }
+                               
+                                
+                            </td>
+                        </tr>
+                        } @empty {
+                            <tr>
+                                <td colspan="6">No Record Found</td>
+                            </tr>
+                        }
+                    </tbody>
+
+
+                </table>
+            </div>
+            <div class="col-6">
+                <div class="row">
+                    @for (player of playerList; track $index) {
+                    <div class="col-4 mt-2">
+
+                        <div class="card">
+                            <div class="card-header">
+                                {{player.name}}
+                            </div>
+                            <div class="card-body">
+                                Player City : {{player.city}}
+                            </div>
+                            <div class="card-footer">
+                                {{player.contactNo}}
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-6">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>City</th>
+                            <th>Mobile No</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (item of playerList; track $index) {
+                        <tr>
+                            <td>
+                                <input type="text" [value]="item.name">
+                            </td>
+                            <td> <input type="text" [value]="item.city"></td>
+                            <td> <input type="text" [value]="item.contactNo"></td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+
+    </div>
+    }
+
+
+
+</div>

@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-3">
+        {{studentName}}
+        <br>
+        <button (click)="chnageName()">Chnage Name</button>
+    </div>
+    <div class="col-3">
+        {{studentCity()}}
+        <br>
+        <button (click)="chnageCity()">Chnage City</button>
+    </div>
+    <div class="col-3">
+        {{studentDetails().name}}  {{studentDetails().city}}
+    </div>
+    <div class="col-3">
+        {{cityList()}}
+        <br>
+        {{cityList()[1]}}
+    </div>
+</div>

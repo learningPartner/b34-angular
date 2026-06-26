@@ -1,0 +1,157 @@
+<div class="container">
+    <!-- Client List Section -->
+     <button (click)="onSaveCourse()">Save Course </button>
+     <app-progress-bar [progressValue]="'40'"></app-progress-bar>
+     <br>
+     <app-alert  [alertType]="'Error'" 
+     [alertMessage]="'API Error. Provide Unique Aadhar Card'"></app-alert>
+    <div class="row">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-6">
+                    @if (isListViewVisiable()) {
+                    <h4 class="mb-0"><i class="bi bi-card-list me-2"></i>Client List</h4>
+                    } @else {
+                    <h4 class="mb-3"><i class="bi bi-plus-circle me-2"></i><span id="formTitle">Add New Client</span>
+                    </h4>
+                    }
+
+
+                </div>
+                <div class="col-6 text-end">
+                    <button class="btn btn-success" (click)="chnageView()"> {{isListViewVisiable() ?'Add New':'List '}}
+                    </button>
+                </div>
+            </div>
+            @if(isListViewVisiable()) {
+            <div id="clientList" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                @for (item of clientList(); track $index) {
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <img [src]="item.logo" class="rounded-circle me-3"
+                                    style="width: 60px; height: 60px; object-fit: cover;">
+                                <div>
+                                    <h5 class="card-title mb-0"> {{item.clientName}} </h5>
+                                    <small class="text-muted"> {{item.businessName}} </small>
+                                </div>
+                            </div>
+                            <ul class="list-unstyled mb-3 small">
+                                <li class="mb-1"><i class="bi bi-person me-2 text-primary"></i> {{item.contactPerson}}
+                                </li>
+                                <li class="mb-1"><i class="bi bi-envelope me-2 text-primary">{{item.contactNo}}</i>
+                                <li class="mb-1"><i class="bi bi-telephone me-2 text-primary">{{item.altContactNo}}</i>
+                                <li class="mb-1"><i class="bi bi-email me-2 text-primary"></i>{{item.email}}</li>
+                            </ul>
+                            <small class="text-muted d-block mb-3">
+                                <i class="bi bi-calendar me-1"></i>Created: {{item.createdDate}}
+                            </small>
+                            <div class="btn-group w-100">
+                                <button class="btn btn-outline-primary btn-sm edit-btn" (click)="onEdit(item)">
+                                    <i class="bi bi-pencil me-1"></i>Edit
+                                </button>
+                                <button class="btn btn-outline-danger btn-sm delete-btn">
+                                    <i class="bi bi-trash me-1"></i>Delete
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                }
+
+            </div>
+            <div id="emptyState" class="text-center py-5 d-none">
+                <i class="bi bi-inbox display-1 text-muted"></i>
+                <p class="mt-3 text-muted">No clients found. Add your first client below.</p>
+            </div>
+            } @else {
+            <div class="row">
+                <div class="col-12">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <form id="clientForm" [formGroup]="clinetForm">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="clientName" class="form-label">Client Name *</label>
+                                        <input type="text" formControlName="clientName" class="form-control"
+                                            id="clientName" required>
+                                        @if (clinetForm.controls['clientName'].touched || clinetForm.controls['clientName'].dirty) {
+                                        <div class="text-danger">
+                                            @if (clinetForm.controls['clientName'].errors?.['required']) {
+                                            <span>This Is Required</span>
+                                            }
+                                            @if (clinetForm.controls['clientName'].errors?.['minlength']) {
+                                            <span>Min 3 char Needed</span>
+                                            }
+                                        </div>
+                                        }
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="businessName" class="form-label">Business Name</label>
+                                        <input type="text" formControlName="businessName" class="form-control"
+                                            id="businessName">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="contactPerson" class="form-label">Contact Person</label>
+                                        <input type="text" formControlName="contactPerson" class="form-control"
+                                            id="contactPerson">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input type="email" formControlName="email" class="form-control" id="email">
+                                         @if (clinetForm.controls['email'].touched || clinetForm.controls['email'].dirty) {
+                                        <div class="text-danger">
+                                            @if (clinetForm.controls['email'].errors?.['required']) {
+                                            <span>This Is Required</span>
+                                            }
+                                            @if (clinetForm.controls['email'].errors?.['pattern']) {
+                                            <span>Emzil si not Valid</span>
+                                            }
+                                        </div>
+                                        }
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="contactNo" class="form-label">Contact Number</label>
+                                        <input type="tel" formControlName="contactNo" class="form-control"
+                                            id="contactNo">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="altContactNo" class="form-label">Alternate Contact</label>
+                                        <input type="tel" formControlName="altContactNo" class="form-control"
+                                            id="altContactNo">
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="logo" class="form-label">Logo URL</label>
+                                        <input type="url" formControlName="logo" class="form-control" id="logo"
+                                            placeholder="https://example.com/logo.png">
+                                    </div>
+                                    <div class="col-12">
+                                        @if(clinetForm.controls['clientId'].value == 0 ||
+                                        clinetForm.controls['clientId'].value == null) {
+                                        <button type="button" [disabled]="clinetForm.invalid" (click)="onSaveClient()" class="btn btn-primary"
+                                            id="submitBtn">
+                                            <i class="bi bi-plus-lg me-1"></i>Add Client
+                                        </button>
+                                        } @else {
+                                        <button type="button" class="btn btn-warning" id="submitBtn">
+                                            <i class="bi bi-plus-lg me-1"></i>Update Client
+                                        </button>
+                                        } -{{clinetForm.controls['clientId'].value}}
+                                        <button type="button" class="btn btn-secondary ms-2" (click)="onResetForm()"
+                                            id="cancelBtn">
+                                            <i class="bi bi-x-lg me-1"></i>Reset
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            }
+
+        </div>
+    </div>
+
+</div>

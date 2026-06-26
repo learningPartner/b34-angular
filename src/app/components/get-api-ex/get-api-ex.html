@@ -1,0 +1,72 @@
+<div class="row">
+    <div class="col-3">
+        <button class="btn btn-success" (click)="getAllUsers()">Get Json Users</button>
+    </div>
+    <div class="col-3">
+        <button class="btn btn-success" (click)="getAllJsonUsers()">Get Json Users</button>
+    </div>
+    <div class="col-3">
+        <button class="btn btn-success" (click)="getBusUsers()">Get Bus Users</button>
+    </div>
+        <div class="col-3">
+        <button class="btn btn-success" (click)="getCityList()">Get Locations</button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-3">
+        <ul>
+            @for (item of jsonUserList; track $index) {
+            <li>{{item.name}}</li>
+            }
+
+        </ul>
+    </div>
+    <div class="col-3">
+        <ul>
+            @for (item of jsonUserListSig(); track $index) {
+            <li>{{item.name}}</li>
+            }
+
+        </ul>
+    </div>
+    <div class="col-3">
+         <select class="form-select">
+            @for (item of busLocationList(); track $index) {
+                 <option  > {{item.code}} - {{item.locationName}}</option>
+            }
+           
+         </select>
+    </div>
+    <div class="col-3">
+        <input type="text" [(ngModel)]="id" placeholder="Entre Id">
+        <button (click)="getIdRecord()">Get Id Data</button>
+        <br>
+
+       busName =>  {{singleBuSchedleData().busName}} <br>
+       busVehicleNo => {{singleBuSchedleData().busVehicleNo}}
+    </div>
+    <div class="col-6">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Sr No</th>
+                    <th>User Name</th>
+                    <th>Email</th>
+                    <th>Full Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (item of busUserList(); track $index) {
+                <tr>
+                    <td> {{$index+1}}</td>
+                    <td>{{item.userName}}</td>
+                    <td>{{item.emailId}}</td>
+                    <td>{{item.fullName}}</td>
+                </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,99 @@
+<div class="row">
+    <div class="col-4">
+        <app-progress-bar [progressValue]="'90'"></app-progress-bar>
+    </div>
+    <div class="col-6">
+        <app-alert   [alertType]="alertType" [alertMessage]="message" ></app-alert>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <app-tabs [tabList]="tabListForProduct"></app-tabs>
+    </div>
+</div>
+<div class="row">
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header bg-waring">
+                Vendor List - {{courseName}}
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Sr No</th>
+                            <th>Batch Name</th>
+                            <th>Created Date </th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (item of batchList(); track $index) {
+                        <tr>
+                            <td>{{$index+1}}</td>
+                            <td>{{item.batchName}}</td>
+                            <td>{{item.createdDate}}</td>
+                            <td>{{item.emailId}}</td>
+                            <td>
+                                <button (click)="onEdit(item)" class="btn btn-success">Edit</button>
+                            </td>
+                        </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="card">
+            <div class="card-header bg-warning">
+                New Vendor
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="">Batch Name</label>
+                            <input type="text" class="form-control" [formField]="batchForm.batchName"
+                                placeholder="Name">
+                            @if (batchForm.batchName().touched()) {
+                            <div class="text-danger">
+                                @for (item of batchForm.batchName().errors(); track $index) {
+                                  {{item.message}}
+                                }
+                            </div>
+                            }
+
+                        </div>
+                        <div class="col-6">
+                            <label for="">Date </label>
+                            <input type="date" class="form-control" [formField]="batchForm.createdDate"
+                                placeholder="Mobile">
+                            @if (batchForm.createdDate().touched()) {
+                            <div class="text-danger">
+                                @for (item of batchForm.createdDate().errors(); track $index) {
+                                {{item.message}}
+                                }
+                            </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-6 text-center">
+                            <button class="btn btn-secondary">Reset</button>
+                        </div>
+                        <div class="col-6 text-center">
+
+                            <button type="button" [disabled]="!batchForm().valid()" class="btn btn-warning" (click)="onSave()">save</button>
+
+
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,104 @@
+<div class="row">
+    <div class="col-4 p-4" [ngClass]="div1Class">
+        Div 1
+    </div>
+    <div class="col-4 p-4" [ngClass]="num1 == num2 ? 'bg-warning': 'bg-secondary' ">
+        divf 2
+    </div>
+    <div class="col-4">
+        <h1 [ngClass]="isActive ? 'text-success': 'text-danger'"> This is Sample text</h1>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div [class]="'col-4 p-4 ' + div1Class">
+        Div 1 - propety binding
+    </div>
+    <div [class]="'col-4 p-4 ' + (num1 == num2 ?'bg-warning':'bg-secondary')" >
+        divf 2
+    </div>
+    <div class="col-4">
+        <h1 [class]="isActive ? 'text-success': 'text-danger'"  > This is Sample text</h1>
+    </div>
+</div>
+<hr>
+
+<div class="row">
+    <div class="col-4">
+        <button class="btn btn-success" (click)="addDiv1Class('bg-success')">Green</button>
+        <button class="btn btn-danger" (click)="addDiv1Class('bg-danger')">Red</button>
+    </div>
+    <div class="col-4">
+        <input type="text" placeholder="Num 1" [(ngModel)]="num1"> --{{num1}}
+        <input type="text" placeholder="Num 2" [(ngModel)]="num2">
+    </div>
+    <div class="col-4">
+        <input type="checkbox" [(ngModel)]="isActive">
+        - {{isActive}}
+    </div>
+</div>
+
+<hr>
+<div class="row">
+    <div class="col-6">
+        <table class="table table-bordered">
+            <thead>
+                <tr> 
+                    <th>Name</th>
+                    <th>City</th>
+                    <th>Mobile No</th>
+                    <th>Status</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (item of playerList; track $index) {
+                <tr>
+                    <td>{{item.name}}</td>
+                    <td>{{item.city}}</td>
+                    <td>{{item.contactNo}}</td>
+                    <td [ngClass]="item.isActive ?'bg-success text-warning':'bg-danger text-dark'">
+                        {{item.isActive ? 'Active':'De-Active'}}
+                    </td>
+                    <td>{{item.grade}}</td> 
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<hr>
+<div class="row">
+    <div class="col-3">
+        <div class="p-3" [ngStyle]="{'background-color':textColor,color: textFontColor}">
+            div 3
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="p-4" [ngStyle]="myCustomCss">
+            div 4
+        </div>
+    </div>
+</div>
+<hr>
+<hr>
+<div class="row">
+    <div class="col-3">
+        <div class="p-3"  [style.backgroundColor]="textColor" [style.color]="textFontColor">
+            div 3
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="p-4" [ngStyle]="myCustomCss">
+            div 4
+        </div>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-3">
+         <input type="text" [(ngModel)]="textColor" placeholder="Enter BackGorund Color">
+         <input type="text" [(ngModel)]="textFontColor" placeholder="Enter BackGorund Color">
+    </div>
+</div>

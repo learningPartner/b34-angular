@@ -1,0 +1,10 @@
+<ul class="nav nav-tabs">
+    @for (item of tabList; track $index) {
+    <li class="nav-item">
+        <a class="nav-link " [ngClass]="defaultTab == item ?'active':''" (click)="onTabClick(item)" >{{item}}</a>
+    </li>
+    }
+
+</ul>
+
+--{{defaultTab}}
