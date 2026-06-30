@@ -11,67 +11,74 @@ import { Vendor } from './components/vendor/vendor';
 import { Clinets } from './components/clinets/clinets';
 import { BatchMaster } from './components/batch-master/batch-master';
 import { ForeignKey } from './components/foreign-key/foreign-key';
+import { Login } from './components/login/login';
+import { authGuard } from './guard/auth-guard';
 
 export const myRoutes: Routes = [
-
-  
-    {
-        path:'',
-        redirectTo:'data-binding',
-        pathMatch:'full'
-    },
-    {
-        path:'adminpage',
-        component: Admin,
-        title:'Admin Page'
-    },
-    {
-        path:'data-binding',
-        component: DataBinding,
-        title:'Data Binding'
-    },
-    {
-        path:'userlist',
-        component: User,
-        title: 'User Portal'
-    },
-    {
-        path:'directives',
-        component: Directives
-    },
-     {
-        path:'clients',
-        component: Clinets
-    },
-     {
-        path:'foreign-key',
-        component: ForeignKey
-    },
-    {
-        path:'att-directives',
-        component: AttrDirective
-    },
-    {
-        path:'signal',
-        component: SignalEx
-    },
-    {
-        path:'get-api',
-        component: GetApiEx
-    },
-    {
-        path:'batches',
-        component: BatchMaster
-    },
-    {
-        path:'vendor',
-        component: Vendor
-    },
-    {
-        path:'**',
-        component: PageNotFound
+  {
+    path: '',
+    redirectTo: 'data-binding',
+    pathMatch: 'full',
+  },
+  {
+    path: 'adminpage',
+    component: Admin,
+    title: 'Admin Page',
+  },
+  {
+    path: 'data-binding',
+    component: DataBinding,
+    title: 'Data Binding' 
+  },
+  {
+    path: 'userlist',
+    component: User,
+    title: 'User Portal',
+  },
+  {
+    path: 'directives',
+    component: Directives 
+  },
+  {
+    path: 'clients',
+    component: Clinets,
+    canActivate: [authGuard],
+    data: {
+        icon:'fa fa-user',
+        role: ['Guest','Admin']
     }
-    
-     
-
+  },
+  {
+    path: 'foreign-key',
+    component: ForeignKey,
+  },
+  {
+    path: 'att-directives',
+    component: AttrDirective,
+  },
+  {
+    path: 'signal',
+    component: SignalEx 
+  },
+  {
+    path: 'get-api',
+    component: GetApiEx,
+  },
+  {
+    path: 'batches',
+    component: BatchMaster,
+  },
+  {
+    path: 'vendor',
+    component: Vendor,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'login',
+    component: Login,
+  },
+  {
+    path: '**',
+    component: PageNotFound,
+  },
 ];
