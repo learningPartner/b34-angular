@@ -1,17 +1,21 @@
+import { DatePipe, DecimalPipe, JsonPipe, LowerCasePipe, SlicePipe, TitleCasePipe, UpperCasePipe } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-admin',
-  imports: [],
+  imports: [DecimalPipe,UpperCasePipe, 
+    LowerCasePipe,TitleCasePipe,DatePipe,SlicePipe,
+  JsonPipe],
   templateUrl: './admin.html',
   styleUrl: './admin.css',
 })
 export class Admin {
 
+  productPrice = 1200.2345; 
+
+  myText = "this is a Demo Content"; 
+
   courseName = "Angular";
-
-  productPrice!: number;
-
   courseDuration: string = "3 Months";
   rollNo: number = 123;
   isStudentActiev: boolean = false;
@@ -48,7 +52,7 @@ export class Admin {
     console.log(this.courseDuration);
     console.log('old '+ this.courseName);
      debugger;
-    this.courseName = "ReactJs";
+    //this.courseName = "ReactJs";
 
     console.log('New '+ this.courseName);
 

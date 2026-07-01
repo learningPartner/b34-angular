@@ -1,7 +1,31 @@
 <p class="adminColor">admin works!</p>
 
-<div class="circle">
+<div class=" ">
+    <H3>{{currentDate}}</H3>
+    <h6>productPrice = {{productPrice}}</h6>
+    <h6>formatedProductPrice = {{productPrice | number:'2.2-2'}}</h6>
+    <h4>myText= {{myText}}</h4>
+    <h4>myTextFormted = {{myText | uppercase}}</h4>
+    <h4>myTextFormted = {{myText | lowercase}}</h4>
+    <h4>myTextFormted = {{myText | titlecase}}</h4>
+</div>
+<div>
+    <h6>currentDate = {{currentDate}}</h6>
+    <h6>currentDate = {{currentDate| date}}</h6>
+    <h6>currentDate = {{currentDate| date :'dd-MM-yyyy'}}</h6>
+    <h6>currentDate = {{currentDate| date :'dd-MMM-yy'}}</h6>
+    <h6>currentDate = {{currentDate| date :'dd/MMMM/yy'}}</h6>
+    <h6>currentDate = {{currentDate| date :'hh:mm:ss'}}</h6>
+</div>
+<div>
 
+    <h6>cityList = {{cityList}}</h6>
+    <h6>{{cityList |slice:0:3}}</h6>
+    <h6>{{courseName |slice:0:3}}</h6>
+</div>
+<div>
+    <h6>student ={{student}}</h6>
+    <h6>{{student |json}}</h6>
 </div>
 
 <input type="text" placeholder="Enetre Admin Name">

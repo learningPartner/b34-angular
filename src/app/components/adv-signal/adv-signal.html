@@ -1,0 +1,61 @@
+<div>
+    <h6>courseName = {{courseName()}}</h6>
+</div>  
+<div class="row">
+    <div class="col-4">
+        <ul>
+            @for (item of cityList(); track $index) {
+                <li>{{item}}</li>
+            }
+        </ul>
+    </div>
+    <div class="col-3">
+        <input type="text" [(ngModel)]="cityName" >
+        <button class="btn btn-success" (click)="addCity()">Add City</button>
+        <button class="btn btn-success" (click)="AddMpCity()">Add Mp City</button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-3">
+       <h6>Name: {{studentObj().name}}</h6> 
+       <h6>City: {{studentObj().city}}</h6> 
+       <h6>mobile: {{studentObj().mobile}}</h6> 
+       <h6>state: {{studentObj().state}}</h6> 
+    </div>
+    <div class="col-4">
+        <input type="text" (input)="onNameChnage($event)" 
+        placeholder="Name">
+        <button class="btn btn-success" (click)="chnageCity()" > Change City</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-3">
+        {{fullName()}}
+    </div>
+    <div class="col-3">
+        {{fullName2()}}
+    </div>
+    <div class="col-2">
+        <button (click)="chnageMiddle()">middle </button>
+    </div>
+    <div class="col-2">
+        <button (click)="chnageLast()">Last Name </button>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-4">
+         <ul>
+            @for (item of cartItem(); track $index) {
+                <li> {{item.produtName}} -- {{item.price}}</li>
+            }
+         </ul>
+    </div>
+    <div class="col-3">
+         Total :{{totalPrice()}}
+    </div>
+    <div class="col-3">
+        <button (click)="addCharger()">Add Charger</button>
+    </div>
+</div>

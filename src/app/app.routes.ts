@@ -13,6 +13,7 @@ import { BatchMaster } from './components/batch-master/batch-master';
 import { ForeignKey } from './components/foreign-key/foreign-key';
 import { Login } from './components/login/login';
 import { authGuard } from './guard/auth-guard';
+import { AdvSignal } from './components/adv-signal/adv-signal';
 
 export const myRoutes: Routes = [
   {
@@ -23,6 +24,11 @@ export const myRoutes: Routes = [
   {
     path: 'adminpage',
     component: Admin,
+    title: 'Admin Page',
+  },
+   {
+    path: 'signal-adv',
+    component: AdvSignal,
     title: 'Admin Page',
   },
   {
