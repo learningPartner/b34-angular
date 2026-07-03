@@ -13,6 +13,8 @@ export class Alert {
 
   @Input() alertMessage: string = '';
 
+  version  ="2.11";
+
   // @Input () alertData: any = {};
 
   getAlertClassName() {

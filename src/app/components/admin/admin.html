@@ -1,12 +1,21 @@
 <p class="adminColor">admin works!</p>
 
+<!-- <h5>{{student.fName}} {{student.mName}} {{student.lName}}</h5> -->
+ <h5>{{student | fullName}}</h5>
+ <h6>{{student.logo | formatUploadFileName}}</h6>
 <div class=" ">
     <H3>{{currentDate}}</H3>
-    <h6>productPrice = {{productPrice}}</h6>
+
+    <h6 appHighLight [colorValue]="'green'">productPrice = {{productPrice}}</h6>
+
     <h6>formatedProductPrice = {{productPrice | number:'2.2-2'}}</h6>
-    <h4>myText= {{myText}}</h4>
+
+    <p appHighLight [colorValue]="'red'">myText= {{myText}}</p>
+
     <h4>myTextFormted = {{myText | uppercase}}</h4>
-    <h4>myTextFormted = {{myText | lowercase}}</h4>
+
+    <strong appHighLight [colorValue]="'orange'">myTextFormted = {{myText | lowercase}}</strong>
+
     <h4>myTextFormted = {{myText | titlecase}}</h4>
 </div>
 <div>

@@ -1,4 +1,4 @@
-import { JsonPipe } from '@angular/common';
+import { JsonPipe, NgTemplateOutlet } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, signal, WritableSignal } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
@@ -8,7 +8,7 @@ import { MyButton } from '../../resuableComponents/my-button/my-button';
 
 @Component({
   selector: 'app-vendor',
-  imports: [FormsModule, JsonPipe, Alert, Tabs,MyButton],
+  imports: [FormsModule, JsonPipe, Alert, Tabs, MyButton, NgTemplateOutlet],
   templateUrl: './vendor.html',
   styleUrl: './vendor.css',
 })

@@ -3,10 +3,11 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { ProgressBar } from "../../resuableComponents/progress-bar/progress-bar";
+import { NaPipe } from '../../pipes/na-pipe';
 
 @Component({
   selector: 'app-directives',
-  imports: [NgIf, FormsModule, NgFor, RouterLink, ProgressBar],
+  imports: [NgIf, FormsModule, NgFor, RouterLink, ProgressBar, NaPipe],
   templateUrl: './directives.html',
   styleUrl: './directives.css',
 })
@@ -29,12 +30,12 @@ export class Directives {
 
   playerList = [
     {progress:'20',isActive: false,name:'Sachin Tendulkar', city :'Mumbai', contactNo:'9988998899'},
-    {progress:'30',isActive: true,name:'Virat Kohli', city :'Delhi', contactNo:'1122334455'},
+    {progress:'30',isActive: true,name:'', city :'', contactNo:'1122334455'},
     {progress:'20',isActive: false,name:'Rahul Dravid', city :'Bhopal', contactNo:'2233442233'},
-    {progress:'50',isActive: true,name:'Virendra Sehwag ', city :'Delhi', contactNo:'55665566779'},
-    {progress:'90',isActive: false,name:'Sachin Tendulkar', city :'Mumbai', contactNo:'9988998899'},
+    {progress:'50',isActive: true,name:'Virendra Sehwag ',  contactNo:'55665566779'},
+    {progress:'90',isActive: false,name:'Sachin Tendulkar', city :'Mumbai', contactNo: null},
     {progress:'20',isActive: false,name:'Virat Kohli', city :'Delhi', contactNo:'1122334455'},
-    {progress:'100',isActive: false,name:'Rahul Dravid', city :'Bhopal', contactNo:'2233442233'},
+    {progress:'100',isActive: false,name:'Rahul Dravid', city :'Bhopal', contactNo:undefined},
     {progress:'47',isActive: false,name:'Virendra Sehwag ', city :'Delhi', contactNo:'55665566779'}
   ]
 

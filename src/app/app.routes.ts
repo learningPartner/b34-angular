@@ -14,6 +14,8 @@ import { ForeignKey } from './components/foreign-key/foreign-key';
 import { Login } from './components/login/login';
 import { authGuard } from './guard/auth-guard';
 import { AdvSignal } from './components/adv-signal/adv-signal';
+import { ViewchildEx } from './components/viewchild-ex/viewchild-ex';
+import { NgTemNgContainer } from './components/ng-tem-ng-container/ng-tem-ng-container';
 
 export const myRoutes: Routes = [
   {
@@ -46,6 +48,14 @@ export const myRoutes: Routes = [
     component: Directives 
   },
   {
+    path: 'viewchild',
+    component: ViewchildEx 
+  },
+  {
+    path: 'container-tem',
+    component: NgTemNgContainer 
+  },
+  {
     path: 'clients',
     component: Clinets,
     canActivate: [authGuard],
@@ -76,8 +86,7 @@ export const myRoutes: Routes = [
   },
   {
     path: 'vendor',
-    component: Vendor,
-    canActivate: [authGuard],
+    component: Vendor 
   },
   {
     path: 'login',

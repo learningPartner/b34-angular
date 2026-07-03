@@ -37,7 +37,6 @@ export class AdvSignal {
 
   constructor() {
     effect(()=>{
-      
       console.log("City Array Length "+ this.cityList().length)
     }) 
 
@@ -52,6 +51,7 @@ export class AdvSignal {
       const middleName =  untracked(()=> this.middleName());
       console.log(this.lastName()); 
     })
+    
     setTimeout(() => {
       debugger;
       this.courseName.set('Java');

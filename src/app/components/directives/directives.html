@@ -237,15 +237,15 @@
                         @for (item of playerList; track $index;let isFirst = $first;let isLast = $last) {
                         <tr>
                             <td>{{$index + 1}}</td>
-                            <td>{{item.name}}</td>
-                            <td>{{item.city}}</td>
-                            <td>{{item.contactNo}}</td>
-                            <td>
+                            <td>{{item.name | na:'__'}}</td>
+                            <td>{{item.city | na:'NA'}}</td>
+                            <td>{{item.contactNo | na:'--'}}</td>
+                            <!-- <td>
                                 {{$even}}
                             </td>
                             <td>
                                 {{isFirst}} -- {{isLast}}
-                            </td>
+                            </td> -->
                             <td>
                                 @if (item.isActive) {
                                      <h6 class="text-primary">Player is Active</h6>
