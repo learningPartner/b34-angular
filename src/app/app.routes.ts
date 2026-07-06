@@ -57,8 +57,7 @@ export const myRoutes: Routes = [
   },
   {
     path: 'clients',
-    component: Clinets,
-    canActivate: [authGuard],
+    component: Clinets, 
     data: {
         icon:'fa fa-user',
         role: ['Guest','Admin']

@@ -1,10 +1,9 @@
 <div class="container">
     <!-- Client List Section -->
-     <button (click)="onSaveCourse()">Save Course </button>
-     <app-progress-bar [progressValue]="'40'"></app-progress-bar>
-     <br>
-     <app-alert  [alertType]="'Error'" 
-     [alertMessage]="'API Error. Provide Unique Aadhar Card'"></app-alert>
+    <button (click)="onSaveCourse()">Save Course </button>
+    <app-progress-bar [progressValue]="'40'"></app-progress-bar>
+    <br>
+    <app-alert [alertType]="'Error'" [alertMessage]="'API Error. Provide Unique Aadhar Card'"></app-alert>
     <div class="row">
         <div class="col-12">
             <div class="row">
@@ -76,7 +75,8 @@
                                         <label for="clientName" class="form-label">Client Name *</label>
                                         <input type="text" formControlName="clientName" class="form-control"
                                             id="clientName" required>
-                                        @if (clinetForm.controls['clientName'].touched || clinetForm.controls['clientName'].dirty) {
+                                        @if (clinetForm.controls['clientName'].touched ||
+                                        clinetForm.controls['clientName'].dirty) {
                                         <div class="text-danger">
                                             @if (clinetForm.controls['clientName'].errors?.['required']) {
                                             <span>This Is Required</span>
@@ -92,15 +92,30 @@
                                         <input type="text" formControlName="businessName" class="form-control"
                                             id="businessName">
                                     </div>
+                                    <div class="col-md-12">
+                                        <label for="businessName" class="form-label">Is Contact Person Available</label>
+                                        <input type="checkbox" formControlName="isContactPersonAvailable"
+                                            id="businessName">
+                                    </div>
                                     <div class="col-md-6">
                                         <label for="contactPerson" class="form-label">Contact Person</label>
                                         <input type="text" formControlName="contactPerson" class="form-control"
                                             id="contactPerson">
+                                        @if (clinetForm.controls['contactPerson'].touched ||
+                                        clinetForm.controls['contactPerson'].dirty) {
+                                        <div class="text-danger">
+                                            @if (clinetForm.controls['contactPerson'].errors?.['required']) {
+                                            <span>This Is Required</span>
+                                            }
+
+                                        </div>
+                                        }
                                     </div>
                                     <div class="col-md-6">
                                         <label for="email" class="form-label">Email</label>
                                         <input type="email" formControlName="email" class="form-control" id="email">
-                                         @if (clinetForm.controls['email'].touched || clinetForm.controls['email'].dirty) {
+                                        @if (clinetForm.controls['email'].touched || clinetForm.controls['email'].dirty)
+                                        {
                                         <div class="text-danger">
                                             @if (clinetForm.controls['email'].errors?.['required']) {
                                             <span>This Is Required</span>
@@ -115,6 +130,15 @@
                                         <label for="contactNo" class="form-label">Contact Number</label>
                                         <input type="tel" formControlName="contactNo" class="form-control"
                                             id="contactNo">
+                                        @if (clinetForm.controls['contactNo'].touched ||
+                                        clinetForm.controls['contactNo'].dirty) {
+                                        <div class="text-danger">
+                                            @if (clinetForm.controls['contactNo'].errors?.['required']) {
+                                            <span>This Is Required</span>
+                                            }
+
+                                        </div>
+                                        }
                                     </div>
                                     <div class="col-md-6">
                                         <label for="altContactNo" class="form-label">Alternate Contact</label>
@@ -129,8 +153,8 @@
                                     <div class="col-12">
                                         @if(clinetForm.controls['clientId'].value == 0 ||
                                         clinetForm.controls['clientId'].value == null) {
-                                        <button type="button" [disabled]="clinetForm.invalid" (click)="onSaveClient()" class="btn btn-primary"
-                                            id="submitBtn">
+                                        <button type="button" [disabled]="clinetForm.invalid" (click)="onSaveClient()"
+                                            class="btn btn-primary" id="submitBtn">
                                             <i class="bi bi-plus-lg me-1"></i>Add Client
                                         </button>
                                         } @else {

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, inject, OnInit, signal, WritableSignal } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, Inject, inject, OnInit, signal, WritableSignal } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Master } from '../../services/master';
 import { ProgressBar } from '../../resuableComponents/progress-bar/progress-bar';
 import { Alert } from "../../resuableComponents/alert/alert";
@@ -20,6 +20,7 @@ export class Clinets implements OnInit {
     clientId: new FormControl(0),
     clientName: new FormControl('', [Validators.required, Validators.minLength(4)]),
     businessName: new FormControl(''),
+    isContactPersonAvailable: new FormControl(false),
     contactPerson: new FormControl(''),
     contactNo: new FormControl(''),
     altContactNo: new FormControl(''),
@@ -31,17 +32,66 @@ export class Clinets implements OnInit {
     logo: new FormControl(''),
   });
 
+  formBuilder= inject(FormBuilder);
+  batchForm!: FormGroup;
   clientList: WritableSignal<any[]> = signal([]);
-
   http = inject(HttpClient);
-
   masterSrv =  inject(Master);
-
   //masterService : Master = new Master();
   
-  // constructor(private master : Master) {
+  constructor() {
+    this.batchForm = this.formBuilder.group({
+      batchId:[0],
+      batchName: ['',[Validators.required,Validators.minLength(3)]],
+      createdDate: [new Date()]
+    })
 
-  // }
+    this.clinetForm.events.subscribe((res:any)=>{
+      debugger;
+    })
+
+    // this.clinetForm.valueChanges.subscribe((formVale: any)=>{
+    //   debugger;
+    // })
+    this.clinetForm.controls['businessName'].valueChanges.subscribe(()=>{
+      //this.clinetForm.get('contactPerson')?.setValue("0011001100");
+      //this.clinetForm.controls['altContactNo']?.setValue('1122112211')
+      //this.clinetForm.get('email')?.setValue('demo@gmail.com')
+      const obj = {
+        contactPerson: '1122112211',
+        email: 'demo@gmailo.com',
+        altContactNo: '9988998877' 
+      };
+      this.clinetForm.patchValue(obj)
+      //this.clinetForm.setValue(obj)
+    })
+
+    this.clinetForm.controls['isContactPersonAvailable'].valueChanges.subscribe((res:boolean)=>{
+      
+      if(res == true) {
+         //this.clinetForm.get('contactPerson')?.enable();
+         console.log('Before ' +this.clinetForm.get('contactPerson')?.hasValidator(Validators.required));
+        // this.clinetForm.get('contactPerson')?.addValidators([Validators.required,Validators.minLength(3)])
+         this.clinetForm.get('contactPerson')?.addValidators(Validators.required)
+         this.clinetForm.get('altContactNo')?.addValidators(Validators.required)
+         this.clinetForm.get('contactNo')?.addValidators(Validators.required) 
+         console.log('After ' +this.clinetForm.get('contactPerson')?.hasValidator(Validators.required));
+        
+      } else {
+         this.clinetForm.get('contactPerson')?.removeValidators(Validators.required)
+         this.clinetForm.get('altContactNo')?.removeValidators(Validators.required)
+         this.clinetForm.get('contactNo')?.removeValidators(Validators.required)
+
+        //this.clinetForm.controls['contactPerson']?.disable()
+      } 
+
+       this.clinetForm?.updateValueAndValidity();
+    })
+
+    this.clinetForm.get('altContactNo')?.valueChanges.subscribe((res:string)=>{
+     
+    })
+  }
   cityList = ['pune','Nagpur','Mumbai']
 
   ngOnInit(): void {

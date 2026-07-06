@@ -88,7 +88,7 @@
                             </ng-container> 
                             <input type="text" class="form-control" name="contactNo"
                                 [(ngModel)]="newVendorObj.contactNo" required minlength="10" maxlength="10"
-                                placeholder="Mobile">
+                                placeholder="Mobile" (input)="onConatctChnage()">
                         </div>
                         <div class="col-6">
                             <ng-container
