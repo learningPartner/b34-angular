@@ -4,6 +4,7 @@ import { Admin } from './components/admin/admin';
 
 import {User} from './components/user/user'
 import { DataBinding } from './components/data-binding/data-binding';
+import { Master } from './services/master';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,7 @@ export class App {
 
   loggedUserEmail: string = '';
   router = inject(Router);
+  masterSrv =  inject(Master);
 
   constructor() {
     const user = sessionStorage.getItem("loggedUserData");
@@ -24,6 +26,11 @@ export class App {
     } 
   }
 
+  onRoleChnaged(event:any) {
+    const value   = event.target.value; 
+    this.masterSrv.onRoleChange$.next(value)
+    this.masterSrv.onRoleChnageBehvaior$.next("Beh Sub "+ value )
+  }
   logOffUser() {
     sessionStorage.removeItem("loggedUserData");
     this.loggedUserEmail = '';

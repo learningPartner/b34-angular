@@ -15,6 +15,15 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="signal">signal</a>
         </li>
+         <li class="nav-item">
+          <a class="nav-link" routerLink="rxjs">rxjs</a>
+        </li>
+        <li>
+          <select (change)="onRoleChnaged($event)">
+            <option value="Guest">Guest</option>
+             <option value="Super_admin">Super Admin</option>
+          </select>
+        </li>
         @if (loggedUserEmail != '') {
         <li class="nav-item">
           <a class="nav-link" routerLink="clients">Clients</a>

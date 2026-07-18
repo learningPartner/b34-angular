@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Master } from '../../services/master';
 
 @Component({
   selector: 'app-data-binding',
@@ -21,6 +22,22 @@ export class DataBinding {
 
   selectedCity: string = '';
   selectedGender: string = 'female';
+  selectRoleName = signal("");
+  masterService =  inject(Master)
+  selectRoleNameBehvairo = signal("");
+
+  constructor() {
+    this.masterService.onRoleChange$.subscribe((res:string)=>{
+      debugger;
+      this.selectRoleName.set(res)
+    })
+
+     this.masterService.onRoleChnageBehvaior$.subscribe({
+      next:(role: string)=>{
+        this.selectRoleNameBehvairo.set(role)
+      }
+    })
+  }
 
   getSquare() {
     debugger;

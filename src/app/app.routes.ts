@@ -16,6 +16,7 @@ import { authGuard } from './guard/auth-guard';
 import { AdvSignal } from './components/adv-signal/adv-signal';
 import { ViewchildEx } from './components/viewchild-ex/viewchild-ex';
 import { NgTemNgContainer } from './components/ng-tem-ng-container/ng-tem-ng-container';
+import { RxjsBasic } from './components/rxjs-basic/rxjs-basic';
 
 export const myRoutes: Routes = [
   {
@@ -31,6 +32,11 @@ export const myRoutes: Routes = [
    {
     path: 'signal-adv',
     component: AdvSignal,
+    title: 'Admin Page',
+  },
+   {
+    path: 'rxjs',
+    component: RxjsBasic,
     title: 'Admin Page',
   },
   {
