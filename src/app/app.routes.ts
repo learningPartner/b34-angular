@@ -16,7 +16,8 @@ import { authGuard } from './guard/auth-guard';
 import { AdvSignal } from './components/adv-signal/adv-signal';
 import { ViewchildEx } from './components/viewchild-ex/viewchild-ex';
 import { NgTemNgContainer } from './components/ng-tem-ng-container/ng-tem-ng-container';
-import { RxjsBasic } from './components/rxjs-basic/rxjs-basic';
+import { RxjsBasic } from './components/rxjs-basic/rxjs-basic'; 
+import { FormArrayEx } from './components/form-array-ex/form-array-ex';
 
 export const myRoutes: Routes = [
   {
@@ -42,6 +43,11 @@ export const myRoutes: Routes = [
   {
     path: 'data-binding',
     component: DataBinding,
+    title: 'Data Binding' 
+  },
+   {
+    path: 'form-array',
+    component: FormArrayEx,
     title: 'Data Binding' 
   },
   {
