@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-6">
+        @if (userResource.isLoading()) {
+        <p>Loading todo items...</p>
+        } @else if (userResource.error()) {
+        <p class="error">Failed to load data!</p>
+        } @else if (userResource.value(); as todos) {
+        <ul>
+            @for (todo of todos; track todo.id) {
+            <li>
+                <input type="checkbox" [checked]="todo.completed" disabled>
+                {{ todo.title }}
+            </li>
+            }
+        </ul>
+        }
+    </div>
+    <div class="col-6">
+        @if (todoResource.isLoading()) {
+        <p>🔄 Loading via RxJS Observable...</p>
+        } @else if (todoResource.error()) {
+        <p class="error">❌ Something went wrong!</p>
+        } @else if (todoResource.value(); as todos) {
+        <ul>
+           
+            @for (todo of todos; track todo.id) {
+                @let name = "abc "+ todo.username;
+            <li>{{ name}}</li>
+            }
+        </ul>
+        }
+    </div>
+</div> 

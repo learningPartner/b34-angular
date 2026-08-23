@@ -21,11 +21,20 @@
          <li class="nav-item">
           <a class="nav-link" routerLink="form-array">form-arra</a>
         </li>
+          <li class="nav-item">
+          <a class="nav-link" routerLink="clients">clients</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" routerLink="rxjs-interview">rxjs-interview</a>
+        </li>
         <li>
           <select (change)="onRoleChnaged($event)">
             <option value="Guest">Guest</option>
              <option value="Super_admin">Super Admin</option>
           </select>
+        </li>
+         <li>
+           <input type="text" placeholder="Enter Num" (input)="onNumberChnage($event)">
         </li>
         @if (loggedUserEmail != '') {
         <li class="nav-item">

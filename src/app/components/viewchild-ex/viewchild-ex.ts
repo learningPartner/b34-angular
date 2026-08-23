@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, viewChild, ViewChild } from '@angular/core';
 import { Alert } from '../../resuableComponents/alert/alert';
 
 @Component({
@@ -9,7 +9,10 @@ import { Alert } from '../../resuableComponents/alert/alert';
 })
 export class ViewchildEx implements OnInit, AfterViewInit {
 
-  @ViewChild('tempRollNo') rollNoEle!: ElementRef;
+ // @ViewChild('tempRollNo') rollNoEle!: ElementRef;
+
+  rollNoEle = viewChild.required<ElementRef<HTMLInputElement>>("tempRollNo")
+
   @ViewChild('myDiv') div11Ele!: ElementRef;
 
   @ViewChild(Alert) myAlertCompInstance!: Alert;
@@ -25,18 +28,21 @@ export class ViewchildEx implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     debugger;
-    this.rollNoEle.nativeElement.value = 11223344;
+    if(this.rollNoEle() != undefined) {
+       this.rollNoEle().nativeElement.value = "sadasd";
+    }
+   
   }
 
 
   getRollNo() {
     //document.getElementById('textNUm').value
-    const value =  this.rollNoEle.nativeElement.value;
+    const value =  this.rollNoEle().nativeElement.value;
     alert("text value "+ value)
   }
 
   setRollNo() {
-    this.rollNoEle.nativeElement.value = 7890;
+    this.rollNoEle().nativeElement.value = "7890";
   }
 
   addCss() {

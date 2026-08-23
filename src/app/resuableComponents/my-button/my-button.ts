@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, inject, input, Input, output, Output } from '@angular/core';
 
 @Component({
   selector: 'app-my-button',
@@ -9,14 +9,19 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class MyButton {
 
-  @Input() btnText: string = '';
+ // @Input() btnText: string = '';
 
-  @Input() btnClassName: string = '';
+  btnText = input("");
 
-  @Output() onBtnClicked =  new EventEmitter<void>();
+  //@Input() btnClassName: string = '';
+  btnClassName =  input("");
+
+  //@Output() onBtnClicked =  new EventEmitter<void>();
+
+  onBtnClicked = output<void>()
 
   btnClick() {
      debugger;
-    this.onBtnClicked.emit();
+    this.onBtnClicked.emit()
   }
 }

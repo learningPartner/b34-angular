@@ -18,11 +18,15 @@ import { ViewchildEx } from './components/viewchild-ex/viewchild-ex';
 import { NgTemNgContainer } from './components/ng-tem-ng-container/ng-tem-ng-container';
 import { RxjsBasic } from './components/rxjs-basic/rxjs-basic'; 
 import { FormArrayEx } from './components/form-array-ex/form-array-ex';
+import { NewFeatures } from './components/new-features/new-features';
+import { determineDefaultRoute } from './helper/reroute';
+import { InterviewRxjs } from './components/interview-rxjs/interview-rxjs';
+import { IntervewiRxjs2 } from './components/intervewi-rxjs2/intervewi-rxjs2';
 
 export const myRoutes: Routes = [
   {
     path: '',
-    redirectTo: 'data-binding',
+    redirectTo: determineDefaultRoute ,
     pathMatch: 'full',
   },
   {
@@ -60,6 +64,14 @@ export const myRoutes: Routes = [
     component: Directives 
   },
   {
+    path: 'rxjs-interview',
+    component: InterviewRxjs 
+  },
+  {
+    path: 'new-features',
+    component: NewFeatures 
+  },
+  {
     path: 'viewchild',
     component: ViewchildEx 
   },
@@ -82,6 +94,10 @@ export const myRoutes: Routes = [
   {
     path: 'att-directives',
     component: AttrDirective,
+  },
+   {
+    path: 'rxjs-grouping',
+    component: IntervewiRxjs2,
   },
   {
     path: 'signal',

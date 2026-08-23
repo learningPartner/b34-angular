@@ -40,6 +40,22 @@ export class Clinets implements OnInit {
   //masterService : Master = new Master();
   
   constructor() {
+
+    this.masterSrv.navbarNumber$.subscribe({
+      next:(num: number)=>{
+        debugger;
+      }
+    })
+     this.masterSrv.navbarBehvaioutNumber$.subscribe({
+      next:(numb:number)=>{
+        debugger
+      }
+    })
+      this.masterSrv.navbarReplaySub.subscribe({
+      next:(numb:number)=>{
+        debugger
+      }
+    })
     this.batchForm = this.formBuilder.group({
       batchId:[0],
       batchName: ['',[Validators.required,Validators.minLength(3)]],

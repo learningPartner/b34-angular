@@ -26,6 +26,12 @@ export class App {
     } 
   }
 
+  onNumberChnage(event:any) {
+    this.masterSrv.navbarNumber$.next(event.target.value);
+    this.masterSrv.navbarBehvaioutNumber$.next(event.target.value)
+    this.masterSrv.navbarReplaySub.next(event.target.value)
+  }
+
   onRoleChnaged(event:any) {
     const value   = event.target.value; 
     this.masterSrv.onRoleChange$.next(value)
