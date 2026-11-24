@@ -1,0 +1,19 @@
+<div class="row">
+    <div class="col-3" [formGroup]="searchFrom">
+        <input type="text" placeholder="search" formControlName="serachText">
+    </div>
+    <div class="col-3">
+        <button (click)="getUserById();">get users</button>
+    </div>
+
+     <div class="col-3">
+        <button (click)="getUserOnClick(2);">get users 2</button>
+        <button (click)="getUserOnClick(3);">get users 3</button>
+        <button (click)="getUserOnClick(4);">get users 4</button>
+        <button (click)="getUserOnClick(5);">get users 5</button>
+    </div>
+
+    <div class="col-3">
+        <button (click)="stopTimer()">Stop Timer</button>
+    </div>
+</div>

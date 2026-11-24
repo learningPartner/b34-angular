@@ -1,0 +1,32 @@
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Sr No</th>
+            @for (column of headerColList; track $index) {
+            <th>{{column.headerText}}</th>
+            }
+            @if(showActionButton) {
+                 <th>Actions</th>
+            }
+           
+
+        </tr>
+    </thead>
+    <tbody>
+        @for (item of gridList; track $index) {
+        <tr>
+            <td>{{$index+1}}</td>
+            @for (column of headerColList; track $index) {
+                <td>{{item[column.fieldName]}}  </td>
+            }
+            @if(showActionButton) {
+                <td>
+                <button class="btn btn-success" (click)="onEdit(item)">Edit</button>
+                <button class="btn btn-success mx-2" (click)="onDelete(item)">Delete</button>
+            </td>
+            }
+            
+        </tr> 
+        }
+    </tbody>
+</table>

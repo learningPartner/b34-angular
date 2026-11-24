@@ -13,12 +13,13 @@ export class ViewchildEx implements OnInit, AfterViewInit {
 
   rollNoEle = viewChild.required<ElementRef<HTMLInputElement>>("tempRollNo")
 
-  @ViewChild('myDiv') div11Ele!: ElementRef;
+  //@ViewChild('myDiv') div11Ele!: ElementRef;
+
+  div11Ele = viewChild.required<ElementRef<HTMLInputElement>>('myDiv');
 
   @ViewChild(Alert) myAlertCompInstance!: Alert;
 
   constructor() {
-    
     
   }
 
@@ -46,9 +47,9 @@ export class ViewchildEx implements OnInit, AfterViewInit {
   }
 
   addCss() {
-    this.div11Ele.nativeElement.style.width = '200px';
-    this.div11Ele.nativeElement.style.height = '200px';
-    this.div11Ele.nativeElement.style.backgroundColor = 'red';
+   // this.div11Ele.nativeElement.style.width = '200px';
+   // this.div11Ele.nativeElement.style.height = '200px';
+   // this.div11Ele.nativeElement.style.backgroundColor = 'red';
   
     const data =  this.myAlertCompInstance.version;
     debugger;

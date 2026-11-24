@@ -47,7 +47,10 @@
        busVehicleNo => {{singleBuSchedleData().busVehicleNo}}
     </div>
     <div class="col-6">
-        <table class="table table-bordered">
+        <app-my-table [headerColList]="colList"
+            [gridList]="busUserList()"
+        ></app-my-table>
+        <!-- <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>Sr No</th>
@@ -67,6 +70,6 @@
                 }
 
             </tbody>
-        </table>
+        </table> -->
     </div>
 </div>

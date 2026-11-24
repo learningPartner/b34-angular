@@ -9,3 +9,7 @@
     border-radius: 50%;
     background-color: greenyellow;
 }
+
+.tdvendorName {
+    width: 40% !important;
+}

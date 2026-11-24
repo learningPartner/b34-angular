@@ -22,6 +22,11 @@ import { NewFeatures } from './components/new-features/new-features';
 import { determineDefaultRoute } from './helper/reroute';
 import { InterviewRxjs } from './components/interview-rxjs/interview-rxjs';
 import { IntervewiRxjs2 } from './components/intervewi-rxjs2/intervewi-rxjs2';
+import { EmployeeForm } from './components/employee-form/employee-form';
+import { SignalBasicEx } from './components/signal-basic-ex/signal-basic-ex';
+import { RxjsBasicEx } from './components/rxjs-basic-ex/rxjs-basic-ex';
+import { RxjsBasocTransform } from './components/rxjs-basoc-transform/rxjs-basoc-transform';
+import { Rxj3 } from './components/rxj-3/rxj-3';
 
 export const myRoutes: Routes = [
   {
@@ -32,6 +37,36 @@ export const myRoutes: Routes = [
   {
     path: 'adminpage',
     component: Admin,
+    title: 'Admin Page',
+  },
+   {
+    path: 'employee',
+    component: EmployeeForm,
+    title: 'Admin Page',
+  },
+  {
+    path: 'employee',
+    component: EmployeeForm,
+    title: 'Admin Page',
+  },
+    {
+    path: 'rxjs-ex',
+    component: RxjsBasicEx,
+    title: 'Admin Page',
+  },
+  {
+    path: 'rxjs-ex-2',
+    component: RxjsBasocTransform,
+    title: 'Admin Page',
+  },
+   {
+    path: 'rxjs-ex-3',
+    component: Rxj3,
+    title: 'Admin Page',
+  },
+   {
+    path: 'signal-basics',
+    component: SignalBasicEx,
     title: 'Admin Page',
   },
    {

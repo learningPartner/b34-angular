@@ -1,0 +1,88 @@
+<div class="row">
+    <div class="col-3">
+        fullName = > {{fullName()}}
+    </div>
+    <div class="col-3">
+        fullShortName=> {{fullShortName()}}
+        <br>
+        fullNameNoTrack => {{fullNameNoTrack()}}
+    </div>
+    <div class="col-3">
+        <button (click)="onChnageFName()">F Name</button>
+        <button (click)="onChnageLName()">L Name</button>
+    </div>
+    <div class="col-3">
+        <button (click)="onChnageShort()">Chnage Short Name</button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-3">
+        courseName => {{courseName}}
+        <br>
+        studentName => {{studentName()}}
+        <br>
+        studentCity => {{studentCity()}}
+        <br>
+        currentDate => {{currentDate()}}
+    </div>
+    <div class="col-3">
+        <button (click)="chnageCourse()">Chnage Course</button>
+    </div>
+    <div class="col-2">
+        <button (click)="changeCity('Pune')"> Pune</button>
+        <button (click)="changeCity('Nagpur')"> Nagpur</button>
+        <button (click)="changeCity('Mumbai')"> Mumbai</button>
+        <button (click)="changeCity('Panji')"> Panji</button>
+    </div>
+    <div class="col-3">
+        couserDuaration => {{couserDuaration()}}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-3">
+        <ul>
+            @for (item of cityList(); track $index) {
+                <li>{{item}}</li>
+            }
+        </ul>
+    </div>
+    <div class="col-3">
+        <button (click)="addRajstanCitis()">Add Rajstan Cities</button>
+    </div> 
+    <div class="col-3">
+        <button (click)="addCity('Pune')"> Pune</button>
+        <button (click)="addCity('Nagpur')"> Nagpur</button>
+        <button (click)="addCity('Mumbai')"> Mumbai</button>
+        <button (click)="addCity('Panji')"> Panji</button>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-3">
+        Name: {{studentObj().name}} <br>
+         City: {{studentObj().city}} <br>
+          Mobile: {{studentObj().mobile}} <br>
+    </div>
+    <div class="col-3">
+        <input type="text" (input)="onChangeStudName($event)">
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-5">
+        <ul>
+            @for (item of userList; track $index) {
+            <li>{{item.username}}</li>
+            }
+        </ul>
+    </div>
+    <div class="col-5">
+        <ul>
+            @for (item of userListSignal(); track $index) {
+            <li>{{item.username}}</li>
+            }
+        </ul>
+    </div>
+</div>

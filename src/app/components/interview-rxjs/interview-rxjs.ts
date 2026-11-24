@@ -39,6 +39,7 @@ export class InterviewRxjs implements OnDestroy {
     ).subscribe((res:any)=>{
       debugger;
     })
+    
 
     this.masterSrv.navbarNumber$.pipe(
       takeUntil(this.destroyUntill)

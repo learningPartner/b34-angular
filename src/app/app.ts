@@ -5,6 +5,7 @@ import { Admin } from './components/admin/admin';
 import {User} from './components/user/user'
 import { DataBinding } from './components/data-binding/data-binding';
 import { Master } from './services/master';
+import { CommonService } from './services/common-service';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,9 @@ export class App {
 
   loggedUserEmail: string = '';
   router = inject(Router);
-  masterSrv =  inject(Master);
+
+  commonService =  inject(CommonService);
+   
 
   constructor() {
     const user = sessionStorage.getItem("loggedUserData");
@@ -26,16 +29,17 @@ export class App {
     } 
   }
 
-  onNumberChnage(event:any) {
-    this.masterSrv.navbarNumber$.next(event.target.value);
-    this.masterSrv.navbarBehvaioutNumber$.next(event.target.value)
-    this.masterSrv.navbarReplaySub.next(event.target.value)
+  onNumberChange(event:any) {
+    debugger;
+    const num =  event.target.value;
+    this.commonService.myInputNo$.next(num)
+    this.commonService.myInputBehSub$.next(num)
+    this.commonService.myInputReplaySub.next(num);
+
   }
 
   onRoleChnaged(event:any) {
-    const value   = event.target.value; 
-    this.masterSrv.onRoleChange$.next(value)
-    this.masterSrv.onRoleChnageBehvaior$.next("Beh Sub "+ value )
+    this.commonService.roleSubject$.next(event.target.value)
   }
   logOffUser() {
     sessionStorage.removeItem("loggedUserData");

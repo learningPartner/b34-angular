@@ -1,0 +1,64 @@
+<div class="row">
+    <div class="col-7">
+        <div class="card">
+            <div class="card-header bg-warning">
+                Employee List
+            </div>
+            <div class="card-body">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-5">
+        <div class="card">
+            <div class="card-header bg-warning">
+                Employee List
+            </div>
+            <div class="card-body">
+                <form [formGroup]="empForm">
+
+                
+                <div class="row">
+                    @for (item of fromConfigData; track $index) {
+                    <div class="col-6">
+                        <label for="">{{item.lable}}</label>
+                        @if (item.type == 'text' ) {
+                            <input [type]="item.type" [placeholder]="item.placeholder" [formControlName]="item.fieldName" 
+                            [class]="item.type == 'text'?'form-control' :''">
+                        } @if (item.type =='checkbox') {
+                            <input type="checkbox" [placeholder]="item.placeholder" [formControlName]="item.fieldName" 
+                            >
+                        } @else if (item.type == "radio") {
+                            @for (opetions of item.options; track $index) {
+                                <input type="radio" [name]="item.fieldName" [value]="opetions" [formControlName]="item.fieldName"  > {{opetions}}
+                            }
+                        } @else if (item.type == "dropdown") { 
+                             <select class="form-select" [formControlName]="item.fieldName"  >
+                                <option value="">Select {{item.placeholder}}</option>
+                                @for (option of item.options; track $index) {
+                                    <option [value]="option"> {{option}}</option>
+                                }
+                             </select>
+                        } @else if (item.type =='textarea') {
+                            <textarea [placeholder]="item.placeholder" class="form-control" [formControlName]="item.fieldName"></textarea>
+                        }
+                        
+                    </div>
+
+                    }
+
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <button class="btn btn-secondary">Reset From</button>
+                    </div>
+                     <div class="col-6">
+                        <button class="btn btn-secondary" (click)="onSaveEmp()">Save Employee</button>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, signal, WritableSignal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { IHeader, MyTable } from '../../resuableComponents/my-table/my-table';
 
 @Component({
   selector: 'app-get-api-ex',
-  imports: [FormsModule],
+  imports: [FormsModule, MyTable],
   templateUrl: './get-api-ex.html',
   styleUrl: './get-api-ex.css',
 })
@@ -20,6 +21,14 @@ export class GetApiEx {
   singleBuSchedleData: WritableSignal<any> = signal({})
 
   http = inject(HttpClient);
+//'userName','emailId','fullName','projectName'
+  colList: IHeader[] = [
+      { fieldName: 'userName', headerText: 'User  Name' },
+      { fieldName: 'emailId', headerText: 'Email' },
+      { fieldName: 'fullName', headerText: 'Full Name' },
+      { fieldName: 'projectName', headerText: 'Project' },
+    ];
+  
 
 
   getAllUsers() {

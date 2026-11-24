@@ -1,4 +1,4 @@
-<div class="row">
+<!-- <div class="row">
     <div class="col-6">
         <app-alert [alertMessage]="'You Dont have Acces to This Page'" [alertType]="'Warning'"></app-alert>
     </div>
@@ -15,7 +15,7 @@
         <app-tabs [tabList]="['Vendor List', 'Vendor Form']" [defaultTab]="selectedTabName"
             (onTabChange)="onTabChanges($event)"></app-tabs>
     </div>
-</div>
+</div> -->
 
 <div class="row">
     @if (selectedTabName == 'Vendor List') {
@@ -25,7 +25,18 @@
                 Vendor List
             </div>
             <div class="card-body">
-                <table class="table table-bordered">
+
+                <ag-grid-angular class="agTable" [rowData]="vendorList()" [pagination]="true" [defaultColDef]="defaultColDef"
+                    [paginationPageSizeSelector]="[10,20,50,100]" [columnDefs]="columnList" />
+
+                <!-- <app-my-table [headerColList]="colList" 
+                [gridList]="vendorList()"
+                 [showActionButton]="true"
+                 (onEditEmitter)="onEdit($event)"
+                 (onDeleteEmitter)="onDelete($event)"
+                 >
+                 </app-my-table> -->
+                <!-- <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th>Sr No</th>
@@ -44,15 +55,14 @@
                             <td>{{item.emailId}}</td>
                             <td>
                                 <app-my-button [btnClassName]="'btn-primary'" [btnText]="'Edit Vendor'"
-                                    (onBtnClicked)="onEdit(item)"></app-my-button>
-                                <!-- <button (click)="onEdit(item)" class="btn btn-success">Edit</button> -->
+                                    (onBtnClicked)="onEdit(item)"></app-my-button> 
                                 <button (click)="onDelete(item.vendorId)" class="btn btn-danger">Delete</button>
                             </td>
                         </tr>
                         }
 
                     </tbody>
-                </table>
+                </table> -->
             </div>
         </div>
     </div>

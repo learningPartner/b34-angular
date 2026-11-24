@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-3">
+        <button (click)="setNumber(11)">11</button>
+        <button (click)="setNumber(1551)">1551</button>
+        <button (click)="setNumber(77)">77</button>
+        <button (click)="setNumber(99)">99</button>
+    </div>
+    
+</div>
+
+<div class="row">
+    <div class="col-6">
+        @if (isAlertVisiable) {
+             <app-alert [alertMessage]="'Save User'" [alertType]="'Success'"></app-alert>
+        }
+       
+    </div>
+    <div class="col-6">
+        <app-my-button [btnClassName]="'btn btn-success'" [btnText]="'Save'"></app-my-button>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-3">
+        <button (click)="isAlertVisiable = true">Toggle Alert Box</button>
+    </div>
+</div>
